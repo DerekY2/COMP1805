@@ -1,0 +1,421 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\usepackage{float}
+\usepackage{xcolor, graphicx}
+\usepackage{hyperref}
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.24in}
+\setlength{\oddsidemargin}{-0.24in}
+\setlength{\textheight}{8.45in}
+\setlength{\topmargin}{-0.45in}
+\setlength{\parindent}{0.3in}
+\headheight40pt
+\headsep22pt
+
+\pagestyle{myheadings}
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Derek Yu 101331395}\vspace{-5pt}\\\hrulefill}
+\author{Derek Yu}
+\def\qed{\ \ \vrule height6pt width5pt depth3pt}
+\renewcommand{\implies}{\rightarrow}
+\newcommand{\xor}{\oplus}
+\newcommand{\same}{\leftrightarrow}
+\newcommand{\ov}[1]{\overline{#1}}
+
+% Blue solution
+\newcommand{\sol}[1]{\textbf{Solution:\,}\textcolor{blue}{#1}}
+
+\begin{document}
+\bibliographystyle{alpha}
+\title{Assignment 1 - COMP 1805}
+%\date{} %Uncomment this if you do not want the date to be shown.
+\maketitle
+\thispagestyle{fancy}
+
+
+
+
+
+
+\medskip
+\begin{enumerate}
+\item(6pts) Determine, for each statement, whether it is a proposition. For propositions, specify their truth values. Justify your answer in either case. See the sample solution in part (a).
+\begin{enumerate}
+\item ``Truth always wins." \\ 
+\sol{
+Yes. TRUE.\\
+This statement is a proposition since it is a declarative sentence that is either true or false. The truth value of the given statement is TRUE.}
+\item ``Help me!'' 
+\\\sol{No. \\This is not a proposition as it is an imperative sentence. No truth value.}
+\item ``This soup is cold.'' 
+\\\sol{Yes. TRUE.\\This is a proposition as it is a declarative sentence that is either true or false. In this case it is true if the soup is actually cold.}
+\item ``Mystery is a genre of literature, and it is enjoyed by everyone." 
+\\\sol{Yes. FALSE. \\ This is a proposition as it is a declarative sentence that is either true or false. In this case it is true if mystery is actually a genre of literature and it is actually enjoyed by everyone. However due to the size of the population, it's very likely that the proposition will be false (only one person needed).}
+\item ``If three robots can assemble three widgets in three hours, then one robot can assemble one widget in three hours.'' 
+\\\sol{Yes, TRUE. \\This is a proposition as it is a declarative sentence that is either true or false. In this case it is true assuming one robot can actually assemble one widget in three hours if three robots can assemble three widgets in three hours (Implication).}
+\end{enumerate}
+
+\newpage
+
+\item(10pts) Let $a$ be the proposition ``I feel happy.'', $b$ be ``I am cold.'', $c$ be ``My friend brought snacks.'', $d$ be ``It is dark.''.
+Translate the following expressions into English. Make your translations sound natural. Remember that $\land$, for example, can have many forms. It also helps to modify the expressions before translating.
+\\$a$ = 'I feel happy'
+\\$b$ = 'I am cold'
+\\$c$ = 'My friend brought snacks.'
+\\$d$ = 'It is dark'
+\begin{enumerate}
+\item $d \implies \neg c$
+\\\sol{\\If it is dark, then I won't be cold.}
+\item $a \xor b$
+\\\sol{\\I'm either happy or I'm cold, but not both.}
+\item $(d \land b )\implies \neg a$
+\\\sol{\\If it is dark and I'm cold, then I won't feel happy.}
+\item $\neg a \implies (b \lor \neg c)$
+\\\sol{\\I won't feel happy, only if I feel cold or my friend didn't bring snacks.}
+\item $a  \land (c \leftrightarrow a)$. Simplify this statement before translating and show your work.
+\\\sol{I feel happy and my friend brought snacks.
+\\\begin{tabular}{llll}
+&$a\land (c \leftrightarrow a)$&$\equiv a \land ((c \implies a) \land (a \implies c))$ &Implication relation\\
+&&$\equiv a \land ((\neg c \lor a) \land (\neg a \lor c))$ &distributive law\\
+&&$\equiv a \land ((\neg c \land \neg a) \lor \textcolor{red}{ (\neg c \land c)} \lor\textcolor{red}{ (a \land \neg a)}\lor (a \land c))$ & contradictions\\
+&&$\equiv a \land ((\neg c \land \neg a) \lor (a \land c))$ & distributive law\\
+&&$\equiv (a \land(\neg c \land \neg a)) \lor(a \land (a \land c))$ & associative law\\
+&&$\equiv (\neg c \land \textcolor{red}{a \land \neg a} ) \lor(\textcolor{red}{a \land a} \land c)$& contradiction, idempotent\\
+&&$\equiv \textcolor{red}{(\neg c \land F)} \lor(a \land c)$ & domination\\
+&&$\equiv (a \land c)$ & Simplified\\
+\end{tabular}
+\\I feel happy and my friend brought snacks.}
+\end{enumerate}
+
+\newpage
+
+\item(10pts) Translate the following English expressions into logical statements. You must explicitly state what the atomic propositions are (e.g., ``Let p be proposition ...'') and then show their logical relation.
+
+\begin{enumerate}
+\item It is not true that blueberries are blue, but they are tasty.
+\\\sol{$\neg b \land t$
+\\Let b be proposition ``blueberries are blue"
+\\Let t be proposition ``blueberries are tasty"
+\\$\neg b \land t$ 
+}
+\item If George were a spider, he would have eight legs.
+\\\sol{$s\implies e$
+\\Let s be proposition ``George is a spider"
+\\Let e be proposition ``George would have eight legs"
+\\$s\implies e$
+}
+\item When my day is tough, I find strength in a cup of coffee with croissant or chocolate.\\
+Hint: Look for three simple facts.
+\\\sol{$d \implies (c \lor e)$
+\\Let d be proposition ``My day is tough"
+\\Let c be proposition ``I find strength in a cup of coffee with croissant"
+\\Let e be proposition ``I find strength in a cup of coffee with chocolate"
+\\$d \implies (c \lor e)$
+}
+\item If it is not true that it is raining or windy, then it is cold if and only if it is snowing. 
+\\\sol{$\neg r \implies (c \leftrightarrow s)$
+\\Let r be proposition ``It is raining or windy"
+\\Let c be proposition ``It is cold"
+\\Let s be proposition ``It is snowing"
+\\$\neg r \implies (c \leftrightarrow s)$
+}
+\item If I flip a coin it must come up either heads or tails.
+\\\sol{$f\implies(h\xor t)$
+\\Let f be proposition ``I flip a coin"
+\\Let h be proposition ``It comes up heads"
+\\Let t be proposition ``It comes up tails"
+\\$f\implies(h\xor t)$
+}
+\end{enumerate}
+
+\newpage
+
+\item(9pts) What is the negation of each of these proposition? Start by translating each English statement into logic. You must explicitly state what are the atomic propositions. Then, negate the obtained logical statement, and possibly modify or simplify. After that translate the negated logical statement back into English. Make sure it sounds natural.
+
+\begin{enumerate}
+\item Am and Om came to the meeting.
+\\\sol{Am or Om didn't come to the meeting.
+\\Let a be proposition ``Am came to the meeting"
+\\Let o be proposition ``Om came to the meeting"
+\\\begin{tabular}{llll}
+&$\quad a \land o$ &original \\
+&$\quad\neg(a \land o)$ & Negated, then De Morgan's\\
+&$\equiv\neg a\lor\neg o$& \\
+\end{tabular}
+\\ Am or Om didn't come to the meeting.
+}
+\item Umber is a sea cucumber who does not like sea water.
+\\\sol{Umber isn't a sea cucumber, or likes sea water.
+\\Let u be proposition ``Umber is a sea cucumber "
+\\Let s be proposition ``Umber likes sea water"
+\\\begin{tabular}{llll}
+&\quad$u \land \neg s$ &original\\
+&\quad$\neg(u \land \neg s)$& Negated, then De Morgan's\\
+&$\equiv\neg u \lor s$\\
+\end{tabular}
+\\ Umber isn't a sea cucumber, or likes sea water.
+}
+\item You must work on a weekend if you need to meet a deadline or catch up on tasks.
+\\\sol{You need to meet a deadline or catch up on tasks, but you aren't working on a weekend.
+\\Let w be ``You work on a weekend"
+\\Let d be ``You need to meet a deadline"
+\\Let t be ``You need to catch up on tasks"
+\\\begin{tabular}{llll}
+&\quad$(d \lor t)\implies w$ & original\\
+&\quad$\neg((d \lor t)\implies w)$&negated, then Implication Relation\\
+&$\equiv\neg(\neg(d \lor t)\lor w)$&De Morgan's\\
+&$\equiv(d \lor t)\land \neg w$\\
+\end{tabular}
+\\You need to meet a deadline or catch up on tasks, but you aren't working on a weekend.
+}
+\end{enumerate}
+
+\newpage
+
+\item(12pts) Determine if the following are tautologies, contradictions or contingencies using truth tables. For your truth tables not to become too wide use additional variables for compound propositions.
+\begin{enumerate}
+\item $(y \implies \neg x) \same ((y \lor x) \lor \neg(y \land \neg x))$
+
+\sol{This is a contingency. \\
+Consider the truth table of this proposition.
+\begin{center}
+\begin{tabular}{cc|ccccc}
+$x$ & $y$ & $\overbrace{(y \implies \neg x)}^A$ & $\overbrace{(y \lor x)}^B$ & $\overbrace{\neg(y \land \neg x)}^C$ & $B \lor C$ & $A \same (B \lor C)$ \\\hline
+T & T & F & T & T & T & F \\
+T & F & T & T & T & T & T \\
+F & T & T & T & F & T & T \\
+F & F & T & F & T & T & T
+\end{tabular}
+\end{center}
+Since the last column contains both T and F truth values, the proposition is a contingency.}
+
+\item $\neg((x \implies y) \implies (\neg y \implies \neg x))$\\
+\sol{This is a contradiction. \\
+Consider the truth table of this proposition.
+\begin{center}
+\begin{tabular}{cc|cccc}
+$x$ & $y$ 
+& $\overbrace{(x \implies y)}^A$ 
+& $\overbrace{(\neg y \implies \neg x)}^B$ 
+& $\overbrace{A\implies B}^C$ 
+& $\neg C$ \\\hline
+T & T & T & T & T & F\\
+T & F & F & F & T & F\\
+F & T & T & T & T & F\\
+F & F & T & T & T & F\\ 
+\end{tabular}
+\end{center}
+Since the last column contains only F truth values, the proposition is a contradiction.}
+\item $(\neg x \implies y) \same (\neg y \implies x)$\\
+\sol{This is a tautology. \\
+Consider the truth table of this proposition.
+\begin{center}
+\begin{tabular}{cc|ccc}
+$x$ & $y$ 
+& $\overbrace{(\neg x \implies y)}^A$ 
+& $\overbrace{(\neg y \implies x)}^B$ 
+& $A\leftrightarrow B$\\\hline
+T & T & T & T & T\\
+T & F & T & T & T\\
+F & T & T & T & T\\
+F & F & F & F & T\\ 
+\end{tabular}
+\end{center}
+Since the last column contains only T truth values, the proposition is a tautology.}
+\item $(y \lor z) \land (y \implies x) \land (z \implies x) \land \neg y$
+\\\sol{This is a contingency. \\
+Consider the truth table of this proposition.
+\begin{center}
+\begin{tabular}{ccc|ccccc}
+$x$ & $y$ & $z$
+& $\overbrace{(y \lor z)}^A$ 
+& $\overbrace{(y \implies x)}^B$ 
+& $\overbrace{(z\implies x)}^C$ 
+& $\overbrace{\neg y}^D$ 
+& $A \land B \land C \land D$
+\\\hline
+T & T & T & T & T & T & F & F\\
+T & T & F & T & T & T & F & F\\
+T & F & T & T & T & T & T & T\\
+T & F & F & F & T & T & T & F\\ 
+F & T & T & T & F & F & F & F\\ 
+F & T & F & T & F & T & F & F\\ 
+F & F & T & T & T & F & T & F\\ 
+F & F & F & F & T & T & T & F\\ 
+\end{tabular}
+\end{center}
+Since the last column contains both T and F truth values, the proposition is a contingency.}
+\end{enumerate}
+
+\newpage
+
+\item(15pts) Using logical equivalences, determine if the following are tautologies, contradictions or contingencies. State the rules of logic that you use in each step. Do not apply more than two laws per step. Note that you cannot use truth tables to justify your answers.
+
+\begin{enumerate}
+\item $(\neg p \land (p \lor q)) \implies q$
+\\\sol{Tautology.
+\\\begin{tabular}{llll}
+&\quad$(\neg p \land (p \lor q))\implies q$&Distributive Law\\
+&$\equiv (\neg p \land p) \lor(\neg p \land q)\implies q$ &Contradiction\\
+&$\equiv F \lor (\neg p \land q) \implies q$&Identity Rule\\
+&$\equiv (\neg p \land q) \implies q$&Implication Relation\\
+&$\equiv \neg(\neg p \land q) \lor q$&De Morgan's Law\\
+&$\equiv p \lor \neg q \lor q$& Law of Excluded Middle\\
+&$\equiv p \lor T$&Domination\\
+&$\equiv T$&\\
+\end{tabular}
+\\This is a tautology as it simplifies to TRUE.}
+\item $\neg (r \lor q)  \lor (\neg r \land q) \lor \neg r $
+\\\sol{Contingency.
+\\\begin{tabular}{llll}
+&\quad$\neg (r \lor q)  \lor (\neg r \land q) \lor \neg r $&De Morgan's Law\\
+&$\equiv(\neg r \land \neg q)  \lor (\neg r \land q) \lor \neg r $&Absorption Law\\
+&$\equiv(\neg r \land \neg q) \lor \neg r $&Absorption Law\\
+&$\equiv\neg r$&\\
+\end{tabular}
+\\This statement depends on the truth value, so it's a contingency.}
+\item $(a \land \neg b) \leftrightarrow (a \rightarrow b)$
+\\\sol{contradiction.
+\\\begin{tabular}{llll}
+&\quad$(a \land \neg b) \leftrightarrow (a \rightarrow b)$&Biconditional\\
+&$\equiv((a \land \neg b)\implies(a \rightarrow b))\land((a \rightarrow b)\implies(a \land \neg b))$&Implication Relation\\
+&$\equiv(\neg(a \land \neg b)\lor(a \rightarrow b))\land(\neg(a \rightarrow b)\lor(a \land \neg b))$&Implication Relation\\
+&$\equiv(\neg(a \land \neg b)\lor(\neg a \lor b))\land(\neg(\neg a \lor b)\lor(a \land \neg b))$&De Morgan's\\
+&$\equiv((\neg a \lor b)\lor(\neg a \lor b))\land(\neg(\neg a \lor b)\lor\neg(\neg a \lor b))$&Idempotent\\
+&$\equiv(\neg a \lor b)\land\neg(\neg a \lor b)$&Contradiction\\
+&$\equiv F$&\\
+\end{tabular}
+\\This is a contradiction as it simplifies to FALSE.}
+\end{enumerate}
+
+\newpage
+
+\item(12pts) Translate the following into English, where $R(x)$ is ``$x$ is a red fox'', $L(x)$ is ``$x$ knows logic'' and $M(x)$ is ``$x$ chases mice''. The universe of discourse is \textbf{all creatures}. No explanation is required.
+\\$R(x)$ = ``$x$ is a red fox''
+\\$L(x)$ = ``$x$ knows logic''
+\\$M(x)$ = ``$x$ chases mice''
+\begin{enumerate}
+\item $\exists x \neg M(x)$
+\\\sol{
+\\Some creatures don't chase mice.
+}
+\item $\forall x (R(x) \implies L(x))$
+\\\sol{
+\\All red foxes know logic.
+}
+\item $\neg \exists x (R(x) \land \neg M(x))$
+\\\sol{
+\\There does not exist a red fox that doesn't chase mice.
+}
+\item $\forall x ((M(x) \land \neg L(x)) \implies \neg R(x))$
+\\\sol{
+\\Any creature that chases mice and doesn't know logic isn't a red fox.
+}
+\end{enumerate}
+
+\newpage
+
+\item(18pts) Convert the following English statements into predicate logic expressions. Be sure to state your predicates, for example: ``Let D(x) be the predicate ``x can dance'' ''. The universe of discourse is \textbf{all humans}.
+
+\begin{enumerate}
+\item Not everyone loves Math.
+\\\sol{$ \neg\forall x L(x)$
+\\Let L(x) be predicate ``x loves Math"
+\\$ \neg\forall x L(x)$
+}
+\item Some chemists can grow diamonds. 
+\\\sol{$\exists x (C(x)\land G(x))$
+\\Let C(x) be predicate ``x is a chemist"
+\\Let G(x) be predicate ``x can grow diamonds"
+\\$\exists x (C(x)\land G(x))$
+}
+\item At least one superhero who cannot fly owns a jetpack.
+\\\sol{$\exists x (S(x)\land \neg F(x) \land J(x))$
+\\Let S(x) be predicate ``x is a superhero"
+\\Let F(x) be predicate ``x can fly"
+\\Let J(x) be predicate ``x owns a jetpack"
+\\$\exists x (S(x)\land \neg F(x) \land J(x))$
+}
+\item Everyone completed their assignment on time except Frodo.
+\\\sol{$\forall x ((x\neq f)\leftrightarrow C(x))$
+\\Let C(x) be predicate ``x completed their assignment on time"
+\\Let $f$ represent ``Frodo"
+\\$\forall x ((x\neq f)\leftrightarrow C(x))$
+}
+\item Not all who wander are lost. 
+\\\sol{$\neg\forall x(W(x)\implies L(x))$
+\\Let W(x) be predicate ``x wanders"
+\\Let L(x) be predicate ``x is lost"
+\\$\neg\forall x(W(x)\implies L(x))$
+}
+\item There is exactly one child who can read minds.
+\\\sol{$\exists x (C(x)\land R(x) \land \forall y((y\neq x)\implies \neg (C(x)\land R(x))))$
+\\Let C(x) be predicate ``x is a child"
+\\Let R(x) be predicate ``x can read minds"
+\\$\exists x (C(x)\land R(x) \land \forall y((y\neq x)\implies \neg (C(x)\land R(x))))$
+}
+\end{enumerate}
+
+\newpage
+
+\item(8pts) Express the negation of the following statements in English. Do not use the words ``\textbf{no}'' or ``\textbf{not}'' in either of your solutions. For this question, it is enough to give just the final answer, but to check that your reasoning is correct, convert each given sentence into a predicate logic expression. Then, apply negation, rework, and simplify the expression until there are no negation symbols $(\neg)$. Then, convert the result to English.
+\begin{enumerate}
+\item There is someone who swims without goggles. 
+\\\sol{Everyone swims with goggles.
+\\Let S(x) be ``x swims with goggles"
+\\\begin{tabular}{llll}
+&\quad$\exists x \neg S(x)$&Original: Negate\\
+&\quad$\neg\exists x \neg S(x)$&Move negation inwards\\
+&$\equiv\forall xS(x)$&\\
+\end{tabular}\\
+Everyone swims with goggles.}
+\item All angels have wings.
+\\\sol{There exists angels without wings.
+\\Let A(x) be ``x is an angel"
+\\Let W(x) be ``x has wings"
+\\\begin{tabular}{llll}
+&\quad $\forall x(A(x)\implies W(x))$&Original: Negate\\
+&\quad $\neg\forall x(A(x)\implies W(x))$&Move negation inwards\\
+&$\equiv\exists x\neg (A(x)\implies W(x))$&\\
+\end{tabular}\\
+There exists angels without wings.}
+\item Everyone in my team has a duty they do not enjoy.
+\\\sol{Someone in my team enjoys all their duties.
+\\Let T(x) = ``x is on my team"
+\\Let D(x) = ``x has a duty they do not enjoy"
+\\\begin{tabular}{llll}
+&\quad $\forall x (T(x)\implies D(x))$&Original: Negate\\
+&\quad $\neg\forall x (T(x)\implies D(x))$&Move negation inwards\\
+&$\equiv\exists x\neg (T(x)\implies D(x))$&\\
+\end{tabular}
+\\Someone in my team enjoys all their duties. (Because it is FALSE that they have a duty they do not enjoy)}
+\item There are two numbers whose sum is equal to their product.
+\\\sol{For any two numbers, their sum will always be different from their product.
+\\Let S(x,y   ) = ``x + y"
+\\Let P(x,y) = ``x * y"
+\\\begin{tabular}{llll}
+&\quad $\exists x \exists y(S(x,y)=P(x,y))$&Original: Negate\\
+&\quad$\neg\exists x \exists y(S(x,y)=P(x,y))$&Move negation inwards\\
+& $\equiv\forall x\forall y\neg(S(x,y)=P(x,y))$&\\
+& $\equiv\forall x\forall y(S(x,y)\neq P(x,y))$&\\
+\end{tabular}
+\\For any two numbers, their sum will always be different from their product.
+}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
