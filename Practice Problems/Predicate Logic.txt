@@ -7,7 +7,7 @@ someone isn't a student and missed the deadline
 Only one person missed the deadline
 
 Q9
-No one walked on the moon
+No one walked on the moon.
 Q10
 Someone does not have a laptop computer
 ∀𝑥(∃𝑦∀𝑧𝑃( 𝑥, 𝑦, 𝑧) ∧ ∃𝑧∃𝑦-𝑃( 𝑥, 𝑦, 𝑧))
