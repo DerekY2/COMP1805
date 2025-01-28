@@ -88,14 +88,15 @@ Translate the following expressions into English. Make your translations sound n
 \item $a  \land (c \leftrightarrow a)$. Simplify this statement before translating and show your work.
 \\\sol{I feel happy and my friend brought snacks.
 \\\begin{tabular}{llll}
-&$a\land (c \leftrightarrow a)$&$\equiv a \land ((c \implies a) \land (a \implies c))$ &Implication relation\\
-&&$\equiv a \land ((\neg c \lor a) \land (\neg a \lor c))$ &distributive law\\
-&&$\equiv a \land ((\neg c \land \neg a) \lor \textcolor{red}{ (\neg c \land c)} \lor\textcolor{red}{ (a \land \neg a)}\lor (a \land c))$ & contradictions\\
-&&$\equiv a \land ((\neg c \land \neg a) \lor (a \land c))$ & distributive law\\
-&&$\equiv (a \land(\neg c \land \neg a)) \lor(a \land (a \land c))$ & associative law\\
-&&$\equiv (\neg c \land \textcolor{red}{a \land \neg a} ) \lor(\textcolor{red}{a \land a} \land c)$& contradiction, idempotent\\
-&&$\equiv \textcolor{red}{(\neg c \land F)} \lor(a \land c)$ & domination\\
-&&$\equiv (a \land c)$ & Simplified\\
+&\quad $a\land (c \leftrightarrow a)$&Biconditional\\
+&$\equiv a \land ((c \implies a) \land (a \implies c))$&Implication relation\\
+&$\equiv a \land ((\neg c \lor a) \land (\neg a \lor c))$ &distributive law\\
+&$\equiv a \land ((\neg c \land \neg a) \lor \textcolor{red}{ (\neg c \land c)} \lor\textcolor{red}{ (a \land \neg a)}\lor (a \land c))$ & contradictions\\
+&$\equiv a \land ((\neg c \land \neg a) \lor (a \land c))$ & distributive law\\
+&$\equiv (a \land(\neg c \land \neg a)) \lor(a \land (a \land c))$ & associative law\\
+&$\equiv (\neg c \land \textcolor{red}{a \land \neg a} ) \lor(\textcolor{red}{a \land a} \land c)$& contradiction, idempotent\\
+&$\equiv \textcolor{red}{(\neg c \land F)} \lor(a \land c)$ & domination\\
+&$\equiv (a \land c)$\\
 \end{tabular}
 \\I feel happy and my friend brought snacks.}
 \end{enumerate}
