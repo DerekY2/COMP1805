@@ -1,0 +1,412 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\usepackage{float}
+\usepackage{xcolor, graphicx}
+\usepackage{hyperref}
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.24in}
+\setlength{\oddsidemargin}{-0.24in}
+\setlength{\textheight}{8.45in}
+\setlength{\topmargin}{-0.45in}
+\setlength{\parindent}{0.3in}
+\headheight72pt
+\headsep22pt
+
+\pagestyle{myheadings}
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Derek Yu 101331395}\vspace{-5pt}\\\hrulefill}
+
+\def\qed{\ \ \vrule height6pt width5pt depth3pt}
+\renewcommand{\implies}{\rightarrow}
+\newcommand{\xor}{\oplus}
+\newcommand{\same}{\leftrightarrow}
+\newcommand{\ov}[1]{\overline{#1}}
+
+% Blue solution
+\newcommand{\sol}[1]{\textbf{Solution:\,}\textcolor{blue}{#1}}
+
+
+\begin{document}
+\bibliographystyle{alpha}
+\title{Assignment 2 - COMP 1805}
+\date{} %comment this out if you want the date to be shown.
+\author{Derek Yu}
+\maketitle
+\thispagestyle{fancy}
+
+
+
+\begin{enumerate}
+
+\item(12pts) Specify the rule of inference used in each of these arguments. No explanation is required.
+
+\begin{enumerate}
+\item Dragons breathe fire and fiercely guard their stashed gold. Therefore, dragons breathe fire. 
+\\\sol{
+\\Simplification
+}
+\item On Fridays, Om visits Am. Today is Friday. Therefore, Om will visit Am.
+\\\sol{
+\\Modus Ponens
+}
+\item  The treasure is buried in the cave or hidden in the forest. The treasure is not buried in the cave. Therefore, the treasure is hidden in the forest.
+\\\sol{
+\\Disjunctive Syllogism
+}
+\item If you spend time with loved ones, then you feel supported. If you feel supported, then you feel happier. Therefore, if you spend time with loved ones, then you feel happier.
+\\\sol{
+\\Hypothetical Syllogism
+}
+\item If you cannot fix this pipe on your own, then you need to call a plumber. You do not need to call a plumber. Therefore, you can fix this pipe on your own.
+\\\sol{
+\\Modus Tollens
+}
+\item It does not rain or I have my umbrella. I do not have my umbrella or I am inside. Therefore, I am inside or it does not rain.
+\\\sol{
+\\Resolution
+}
+\end{enumerate}
+
+\newpage
+
+\item(4pts) Prove the validity of the Resolution rule of inference by applying the laws of propositional logic and any other rule of inference excluding Resolution.
+\\\sol{
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $a \lor b$
+	\item $\neg a\lor c$ \hspace{50pt} $\therefore b\lor c$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	\item $b\lor a$ \hfill	Commutative Law (1)
+	\item $\neg b \implies a$ \hfill	Implication Relation (3)
+	\item $a \implies c$ \hfill	Implication Relation (2)
+	\item $\neg b\implies c$ \hfill	Hypothetical Syllogism (4,5)
+	\item $b\lor c$ \hfill	Implication Relation (6)
+\end{enumerate} 
+\hfill $\square$
+}
+
+\newpage
+
+\item(24pts) Determine whether or not the following arguments are valid. If they are valid, then show your proof and state the rules of logic and the rules of inference used to prove validity. If they are invalid, outline precisely why they are invalid. For arguments with quantifiers assume that the domain is \{all humans\} or \{everything\}. See a sample solution posted in the ``Assignment 2'' module on Brightspace.
+
+\begin{enumerate}
+\item If you solve every problem in this assignment correctly, then you will know how to create proofs. You know how to create proofs. Therefore, you solved correctly every problem in this assignment.
+\\\sol{The argument is \textbf{invalid}.\\
+	Let $s$ be ``You solved every problem in this assignment correctly.''\\
+	Let $k$ be ``You know how to create proofs.''\\ 
+	The argument is:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $s\implies k$
+	\item $k$ \hspace{50pt} $\therefore s$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	The argument is invalid. Set s=False, k=True. Premises are True:
+        \begin{itemize}
+        \item $s\implies k$ is True because s is False, which makes the implication true regardless of $k$.
+        \item $k$ is True
+        \end{itemize}
+        Therefore, we have found truth values that make all Premises True and the Conclusion False.
+\end{enumerate} 
+\hfill $\square$
+}
+\item Dinner reservations will be cancelled if the restaurant is fully booked or the chef is sick. The dinner reservations were not canceled. So, we can assume that the chef is not sick.
+\\\sol{The argument is \textbf{valid}.\\
+	Let $d$ be ``Dinner reservations are cancelled.''\\
+	Let $f$ be ``Restaurant is fully booked.''\\ 
+	Let $s$ be ``Chef is sick.''\\ 
+	The argument is:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $(f\lor s)\implies d$
+	\item $\neg d$\hspace{50pt} $\therefore \neg s$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	\item $\neg (f \lor s)$ \hfill	Modus Tollens (1,2)
+	\item $\neg f \land \neg s$ \hfill	De Morgan's (3)
+	\item $\neg s$ \hfill	Simplification (4)
+\end{enumerate} 
+\hfill $\square$
+}
+\item I will buy a new car and a new house only if I get a job. I am not going to get a job. Therefore, I will not buy a new car.
+\\\sol{The argument is \textbf{invalid}.\\
+	Let $c$ be ``I will buy a new car.''\\
+	Let $h$ be ``I will buy a new house.''\\ 
+	Let $j$ be ``I will get a job.''\\ 
+	The argument is:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $(c\land h)\implies j$
+	\item $\neg j$\hspace{50pt} $\therefore \neg c$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	% \item $\neg (c \land h)$ \hfill	Modus Tollens (1,2)
+	% \item $\neg c \lor \neg h$ \hfill	De Morgan's (3)
+    The argument is invalid. Set $c$ = True. This makes the conclusion False. Set $h$ = False, $j$ = False. The premises are all True:
+        \begin{itemize}
+        \item $(c\land h)\implies j$ is true as $(c \land h)$ is False, so the implication is true regardless of j.
+        \item $\neg j$ is True
+        \end{itemize}
+        Therefore, we have found truth values that make all Premises True and the Conclusion False
+\end{enumerate} 
+\hfill $\square$
+}
+\item Everyone in this class completed the tutorial quiz. Ava is a student in this class. Therefore, Ava completed the tutorial quiz.
+\\\sol{The argument is \textbf{valid}.\\
+	Domain: \{all humans\}. \\
+	Let $C(x)$ be ``x is in this class.''\\
+	Let $Q(x)$ be ``x completed the tutorial quiz.''\\ 
+	The argument is:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\forall x (C(x) \implies Q(x))$
+	\item $C(Ava)$ \hspace{50pt} $\therefore Q(Ava)$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	\item $C(Ava)\implies Q(Ava)$ \hfill	Universal Instantiation (1)
+	\item $Q(Ava)$ \hfill Modus Ponens (2,3)
+\end{enumerate} 
+\hfill $\square$
+}
+\item Margo, a student in the COMP 1805 class, enjoys painting with watercolours. Everyone who paints with watercolours owns an extensive collection of paintbrushes. Therefore, someone in the COMP 1805 class owns an extensive collection of paintbrushes.
+\\\sol{The argument is \textbf{valid}.\\
+	Domain: \{all humans\}. \\
+	Let $C(x)$ be ``x is a student in the COMP 1805 class.''\\
+	Let $P(x)$ be ``x paints with watercolours.''\\
+	Let $O(x)$ be ``x owns an extensive collection of paintbrushes.''\\ 
+	The argument is:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $C(Margo)\land P(Margo)$
+	\item $\forall x(P(x)\implies O(x))$\hspace{50pt} $\therefore \exists x(C(x)\land O(x))$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	\item $P(Margo) \implies O(Margo)$ \hfill Universal Instantiation (2)
+        \item $P(Margo)$ \hfill Simplification (1)
+        \item $C(Margo)$\hfill Simplification (1)
+        \item $O(Margo)$\hfill Modus Ponens (3,4)
+        \item $C(Margo)\land O(Margo)$ \hfill Conjunction (5,6)
+        \item $\exists x(C(x)\land O(x))$\hfill Existential Generalization (7)
+\end{enumerate} 
+\hfill $\square$
+}
+\item Not everyone can solve this problem. Someone is very clever. Therefore, there is someone very clever who cannot solve this problem.
+\\\sol{The argument is \textbf{invalid}.\\
+	Domain: \{all humans\}. \\
+	Let $S(x)$ be ``x can solve this problem.''\\
+	Let $C(x)$ be ``x is very clever.''\\ 
+	The argument is:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\exists x\neg S(x)$
+	\item $\exists x C(x)$ \hspace{50pt} $\therefore \exists x(C(x)\land\neg S(x))$ \vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+    The argument is invalid. Using Existential Instantiation: set $S(Sam)$=False and $C(Jane)$=True. Notice that Sam and Jane are not the same person, otherwise EI would be invalid. Premises are True:
+        \begin{itemize}
+        \item $\exists x\neg S(x)$ is True because $S(Sam)$=False.
+        \item $\exists x C(x)$ is True because $C(Jane)$=True.
+        \end{itemize}
+        There is no statement that says someone is very clever and cannot solve this problem. Therefore, we have found truth values that make all Premises True and the Conclusion False.
+\hfill $\square$
+\end{enumerate} 
+}
+\end{enumerate}
+
+\newpage
+
+\item(15pts) The following arguments are \textbf{invalid}. Please explain what is wrong with each, supporting your explanation with the relevant rules of logic and inference. No formal solution is required. Keep your explanation concise — each part can be explained in two sentences.
+
+\begin{enumerate}
+\item Let $K(x)$ be ``x is a knitter.'' Given the premise $\exists x K(x)$, we conclude that $K(Leeloo)$. Therefore, Leeloo is a knitter.
+\\\sol{
+\\Using EI, given there exists someone who is a knitter, this "someone" can be any arbitrary person, not necessarily Leeloo. The argument is invalid at it assumes Leeloo specifically satisfies $K(x)$.
+}
+\item If the moon is full, the werewolf will awaken within my soul. The moon is not full. Therefore, the werewolf will remain dormant.
+\\\sol{
+\\The moon is not full, which means the implication is vacuously True (condition is False). As such, the premise is True regardless of what follows, which means it can be be False that the werewolf remains dormant, and the premise would still be True (and conclusion is False).
+}   
+\item If $n$ is a real number greater than 1, then $n^2>1$. Suppose we are given a real number $n$, such that $n^2 >1$. We conclude, that $n>1$.
+\\\sol{
+\\We can't conclude that $n>1$, because the premise $n^2 >1$ can be True while $n>1$ is False, as the implication would still be vacuously True.
+}
+\item Let $A(x, y)$ be ``$x$ admires $y$.'' Given the premise $\exists x A(x, Max)$, it follows that $A(Max, Max)$. Then by Existential Generalization it follows that $\exists x A(x, x)$, so that someone admires themselves.
+\\\sol{
+\\We cannot use EI following $\exists x A(x, Max)$ to claim $A(Max, Max)$, because $x$ "someone" could be any arbitrary person, not specifically Max. We already know about Max so the statement is not valid.
+}
+\item Absolutely all owls see in the dark. Lumos, however, is not an owl.
+Therefore, Lumos cannot see in the dark.
+\\\sol{
+\\The premise says all owls see in the dark. However, it does not say anything about animals that are not owls. Since Lumos is not an owl, the implication is vacuously True regardless of whether Lumos can or cannot see in the dark, so the conclusion is not always True.
+}
+\end{enumerate}
+
+\newpage
+
+\item(8pts) Prove that if $n$ is an integer and $n^3+9$ is odd, then $n$ is even using
+
+\begin{enumerate}
+\item an indirect proof (contrapositive)
+\\\sol{
+\\Indirect: Prove that if integer $n$ is odd, then $n^3+9$ is even.
+\\Assume $n$ is an odd integer; then $n=2k+1$ for some integer $k$
+\\The sum of any set of integers is an integer.
+\\\begin{tabular}{rlll}
+$n^3+9$&$=(2k+1)^3+9$\\
+&$=8k^3+12k^2+6k+10$\\
+&$=2(4k^3+6k^2+3k+5)$\\
+&$=2r$ where integer $r=4k^3+6k^2+3k+5$, so $n^3+9$ is even.\\
+\end{tabular}
+\\$\because$ An integer m is even iff there exists an integer $j$ such that $m=2j$
+\\$\therefore n^3+9$ is even.\hfill $\square$
+}
+\item a proof by contradiction.
+\\\sol{\\
+Proof by Contradiction: Prove that if $n$ is an integer and $n^3+9$ is odd, then $n$ is even.
+\\Assume to the contrary that $n^3+9$ is odd, and $n$ is odd.
+\\Since $n$ is odd, then there exists some integer $k$, such that $n=2k+1$
+\\\begin{tabular}{rlll}
+$n^3+9$&$=(2k+1)^3+9$\\
+&$=8k^3+12k^2+6k+10$\\
+&$=2(4k^3+6k^2+3k+5)$\\
+&$=2r$ where integer $r=4k^3+6k^2+3k+5$, so $n^3+9$ is even.\\
+\end{tabular}\\
+It turns out $n^3+9$ is even. This is a contradiction!\\
+$\therefore$ if $n^3+9$ is odd, then integer $n$ is even.\hfill $\square$
+}
+\end{enumerate} 
+Remember to start your proof with the statement you are proving!
+
+\newpage
+
+\item(5pts) Let $x$ and $y$ be two real numbers. Use a proof by \textbf{contraposition} to show that if $x + y \geq 10$, then $x \geq 5$ or $y \geq 5$. Start by specifying the statement you are proving.
+\\\sol{
+\\Proof by contraposition: Show that if $x<5$ and $y<5$, then $x+y<10$.
+\\\begin{tabular}{rlll}
+$\because x<5$ and $y<5$&add inequalities\\
+$x+y<5+5$\\
+\end{tabular}\\
+$\therefore x+y<10$ \quad\quad\quad\quad If $x<5$ and $y<5$, then $x+y<10$.\hfill$\square$
+}
+
+\newpage
+
+\item(12pts) Prove or disprove:
+\begin{enumerate}
+\item The average of two even numbers is an even integer.
+\\\sol{The statement is false.
+\\Counterexample:
+\\Let $x=2$, an even integer since $x=2k$ for some integer $k$.
+\\Let $y=4$, an even integer since $y=2j$ for some integer $j$.
+\\\begin{tabular}{llll}
+$\frac{1}{2}(x+y)$$=\frac{1}{2}(2+4)$$=\frac{1}{2}(6)$$=3$&&$3$ is ODD, since $3=2k+1$ where integer $k=1$
+\end{tabular}
+\\The average of even numbers x and y is an ODD number. We have found a counterexample.
+\\$\therefore$ The statement is false.\hfill$\square$
+}
+\item The average of two odd numbers is an odd integer.
+\\\sol{The statement is false.
+\\Counterexample:
+\\Let $x=1$, an odd integer since $x=2k+1$ for some integer $k$.
+\\Let $y=3$, an odd integer since $y=2j+1$ for some integer $j$.
+\\\begin{tabular}{rlll}
+$\frac{1}{2}(x+y)$$=\frac{1}{2}(1+3)$$=\frac{1}{2}(4)$$=2$&&$2$ is even.\\
+\end{tabular}
+\\The average of odd numbers x and y is an EVEN number. We have found a counterexample.
+\\$\therefore$ The statement is false.\hfill$\square$
+}
+\item The average of two odd integers is an integer.
+\\\sol{True. The average of two odd integers is an integer.
+\\Direct Proof:
+\\Assume $x$ is an odd number, then $x=2k+1$ for some integer $k$.
+\\Assume $y$ is an odd number, then $y=2j+1$ for some integer $j$.
+\\Recall that the sum of integers is an integer.
+\\\begin{tabular}{rlll}
+$\frac{1}{2}(x+y)$$=\frac{1}{2}(2k+1+2j+1)$$=k+j+1$$=r$&for integer $r=k+j+1$.
+\end{tabular}\\
+$\therefore$ The average of two odd integers is an integer.\hfill$\square$
+}
+\end{enumerate}
+
+\newpage
+
+\item(8pts) Given a positive integer $n$ prove the following: ``$n$ is even if and only if $13n + 8$ is even.'' Remember to specify the proof technique you are using and the statement you are proving.
+\\\sol{
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+\item Prove that if $13n + 8$ is even, then $n$ is even.
+\\Indirect Proof: Prove that if $n$ is odd, then $13n+8$ is odd.
+\\Assume $n$ is odd; then $n=2k+1$ for some integer $k$.
+\\\begin{tabular}{rlll}
+$13n+8$&$=13(2k+1)+8$\\
+&$=26k+13+8$\\
+&$=26k+20+1$\\
+&$=2(13k+10)+1$\\
+&$=2r+1$ where integer $r=13k+10$, so $13n+8$ is ODD.\\
+\end{tabular}
+\\$\therefore$ $13n+8$ is ODD. \hfill $\square$
+\\$\therefore$ By contraposition: If $13n + 8$ is even, then $n$ is even.
+\item Prove that if $n$ is even, then $13n+8$ is even.
+\\Direct Proof:
+\\Assume $n$ is even; then $n=2k$ for some integer $k$.
+\\\begin{tabular}{rlll}
+$13n+8$&$=13(2k)+8$\\
+&$=26k+8$\\
+&$=2(13k+4)$\\
+&$=2r$ \quad where integer $r=13k+4$, so $13n+8$ is EVEN.\\
+\end{tabular}
+\\$\therefore$ $13n+8$ is EVEN. \hfill $\square$
+\end{enumerate}
+We have proven that both (1) and (2) are TRUE. Therefore, the statement ``$n$ is even if and only if $13n + 8$ is even.'' is TRUE.
+}
+
+\newpage
+
+\item(12pts) Identify mistakes in the following proof attempts. Clearly state the line/step where incorrect reasoning occurred and justify your answer.
+
+\begin{enumerate}
+\item fabricated proof showing $1/8 > 1/4$:
+
+\begin{center}
+    \begin{minipage}{0.55\textwidth}
+		\begin{enumerate}[label =(\arabic*)] 
+	    \item  $3>2$ 
+		\item  $3 \log_{10}(1/2) > 2 \log_{10}(1/2)$\quad\textcolor{blue}{Incorrect Reasoning Here}
+		\item  $\log_{10}(1/2)^3 > \log_{10}(1/2)^2$
+		\item  $(1/2)^3 > (1/2)^2$
+		\item the claim follows by the rules for multiplying fractions \hfill $\square$
+		\end{enumerate}
+    \end{minipage}
+\end{center}
+\sol{
+\\On step (2), both sides were multiplied by $\log_{10}(1/2)$. However $\log_{10}(1/2)$ is negative. Multiplying an inequality by a negative value requires the sign to be flipped, which was not done. Otherwise the correct result would've been $1/8 < 1/4$.
+}
+\item fabricated proof showing that 1 cent (\textcent) is equal to 1 dollar ($\$$):
+\begin{center}
+$ 1$\textcent $= \$ 0.01 = (\$ 0.1)^2  = (10$\textcent$)^2 = 100$\textcent $= \$1$.
+\end{center}
+\sol{
+\\At $(\$ 0.1)^2  = (10$\textcent$)^2$, there is a unit change from $\$$ to \textcent. However this is not reflected in values that are being operated (squaring) upon. As such, the proof's reasoning states  $(0.1)^2 = (10)^2$, which is false.
+}
+\item fabricated proof showing that if $a$ and $b$ are real numbers, such that $a=b$, then $a=0$:
+
+\begin{center}
+    \begin{minipage}{0.55\textwidth}
+		\begin{enumerate}[label =(\arabic*)] 
+	    \item  $a=b$ 
+		\item  $a^2=ab$
+		\item  $a^2-b^2=ab-b^2$
+		\item  $(a-b)(a+b) = (a-b)b$
+		\item  $a+b = b$\quad\textcolor{blue}{Incorrect Reasoning Here}
+		\item  $a = 0$ \hfill $\square$
+		\end{enumerate}
+    \end{minipage}
+\end{center}
+\end{enumerate}
+\sol{
+\\On step (4), both sides are seen to be multiplied by (a-b). However since a=b, then (a-b)=0. As such, both sides are then divided by 0 in step (5), which is impossible.
+}
+
+\end{enumerate}
+\end{document}
