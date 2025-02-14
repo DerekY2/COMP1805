@@ -1,0 +1,324 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\usepackage{float}
+\usepackage{xcolor, graphicx}
+\usepackage{hyperref}
+
+\usepackage{soul}
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.24in}
+\setlength{\oddsidemargin}{-0.24in}
+\setlength{\textheight}{8.45in}
+\setlength{\topmargin}{-0.45in}
+\setlength{\parindent}{0.3in}
+\headheight72pt
+\headsep22pt
+
+\pagestyle{myheadings}
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Derek Yu 101331395 Bonus MCQ 1}\vspace{-5pt}\\\hrulefill}
+\fancyfoot[C]{\thepage}
+\def\qed{\ \ \vrule height6pt width5pt depth3pt}
+\renewcommand{\implies}{\rightarrow}
+\newcommand{\xor}{\oplus}
+\newcommand{\same}{\leftrightarrow}
+\newcommand{\ov}[1]{\overline{#1}}
+
+% Blue solution
+\newcommand{\sol}[1]{\textbf{Solution:\,}\textcolor{blue}{#1}}
+
+
+\begin{document}
+\bibliographystyle{alpha}
+\title{COMP 1805 - Bonus 1}
+\author{Derek Yu}
+\date{} %comment this out if you want the date to be shown.
+\maketitle
+\thispagestyle{fancy}
+
+\textbf{Propositional Logic [1-4]}
+\begin{enumerate}
+
+\item Which proposition is equivalent to the following: $a\land (\neg b\lor(c\implies d))$
+\begin{enumerate}
+\item \hl{$\neg(\neg a\lor (b\land c\land \neg d))$}
+\item $\neg(\neg a\land (b\lor c\land d))$
+\item $\neg(\neg a\implies (b\land c)\lor \neg d)$
+\item $\neg (a\lor (b\land c\lor d))$
+\end{enumerate}
+
+\item If $b=$"I will ball", $t=$"I will take the table", $p=$"I will take the piano", convert the following into a logical expression: I will ball if I take the table or piano.
+\begin{enumerate}
+\item {$(t\land p)\implies b$}
+\item {$(t\lor p)\leftrightarrow b$}
+\item \hl{$(t\lor p)\implies b$}
+\item {$b\implies(t\land p)$}
+\end{enumerate}
+
+\item Find the logically equivalent statement for the following: I won a prize and didn't pay my fee.
+\begin{enumerate}
+\item It is false that I didn't win a prize or I paid my fee.
+\item It is true that I won a prize, it is true that I paid my fee.
+\item \hl{It is false that I either didn't win a prize or paid my fee.}
+\item It is true that I didn't win a prize and I paid my fee.
+\end{enumerate}
+
+\item Which statement is not a proposition?
+\begin{enumerate}
+\item The apple in bed is void.
+\item Creating a bus driver removes levels of conundrum.
+\item \hl{Take a deep breath to appreciate that the sky is green.}
+\item Huge wins are for those who are unemployed.
+\end{enumerate}
+
+\newpage
+
+\textbf{Predicate Logic [5-8]}
+
+\item $U=$``All Humans''
+\\$A(x)=$``$x$ has an apple''
+\\$B(x)=$``$x$ beat Michael Jordan''
+\\$C(x)=$``$x$ owns an apartment''\\ 
+\\Convert the following into logic:
+\\A person who beat Michael Jordan must have an apple and can't own an apartment.
+\begin{enumerate}
+\item $\forall x(B(x)\land A(x)\land\neg C(x))$
+\item $\forall x(B(x)\leftrightarrow (A(x)\land\neg C(x)))$
+\item \hl{$\forall x(B(x)\implies (A(x)\land\neg C(x)))$}
+\item $\forall x(B(x)\lor\neg B(x)\land (A(x)\land\neg C(x)))$
+\end{enumerate}
+
+\item Find the correct negation of the following expression: $\forall x(A(x)\leftrightarrow\neg B(x))$
+\begin{enumerate}
+\item \hl{$\exists x((A(x)\land B(x))\lor(\neg A(x)\land\neg B(x)))$}
+\item $\exists x\neg ((A(x)\lor B(x))\land (\neg A(x)\lor B(x)))$
+\item $\forall x((B(x)\land\neg A(x))\lor (A(x)\land B(x)))$
+\item $\forall x((A(x)\land B(x))\lor(\neg A(x)\land\neg B(x)))$
+\end{enumerate}
+
+\item $U=$``All Humans''
+\\$T(x)=$``$x$ takes the train''
+\\$N(x)=$``$x$ negates the noodle house''
+\\$W(x)=$``$x$ walks the dog''\\ 
+\\Convert the following into English: $\exists x(W(x)\land (N(x)\lor T(x)))$
+\begin{enumerate}
+\item Everyone who walks the dog but either negates the noodle house or takes the train.
+\item There exists someone who walks the dog and negates the noodle house or takes the train.
+\item Everyone walks the dog if they negate the noodle house or takes the train.
+\item \hl{There exists someone who walks the dog and either negates the noodle house or takes the train.}
+\end{enumerate}
+
+\item For what domain is the following expression True: $\forall x((3<x\leq18)\land (\frac{x}{3}=0))$
+\begin{enumerate}
+\item $U=\{3,6, 9, 12, 15, 18\}$
+\item \hl{$U=\{6, 9, 12, 15, 18\}$}
+\item $U=\{4, 6, 8, 10,12, 14,16, 18\}$
+\item $U=\{6, 9, 12, 15\}$
+\item $U=\{3,18\}$
+\item $U=\{6, 9, 12, 15,18\}$
+\end{enumerate}
+
+\newpage
+
+\textbf{Validity of Logical Arguments [9-11]}
+
+\item 
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $a\implies b$
+	\item $c\leftrightarrow b$
+	\item $\neg c\land d$ \hspace{50pt}\vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+	Given the premises above, we can conclude:\\$\therefore $ ?\hfill $\square$
+\end{enumerate} 
+\begin{enumerate}
+\item $d=False$
+\item \hl{$a=False$}
+\item $e=True$
+\item $b=True$
+\end{enumerate}
+
+\item Select the invalid argument.
+\begin{enumerate}
+\item \hl{$(a\land b), (c\implies \neg b)$}\hl{\quad$\therefore c$}
+\item $(a\lor b\lor c), (\neg b\implies \neg c), c$\quad$\therefore b$
+\item $(a\land(b\lor c)), (a\lor\neg b)$\quad$\therefore c\lor\neg c$
+\item $(a\lor b\lor c), (\neg b\implies \neg c), \neg(a\lor c)$\quad$\therefore b$
+\end{enumerate}
+
+\item Select the correct statement about the argument below:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $b\lor a$
+	\item $d\land b$
+	\item $b\leftrightarrow c$
+	\item $e\lor d$
+	\item $\neg c\implies b$ \hspace{50pt}\vspace{3pt}
+	\vspace{5pt} \hrule \vspace{5pt}
+\end{enumerate} Options:
+\begin{enumerate}
+\item This argument is invalid.
+\item \hl{This argument is a tautology.}
+\item This argument is a contingency.
+\item This argument is a contradiction.
+\end{enumerate}
+
+\newpage
+
+\textbf{Validity \& Quantifiers [12-14]}
+\\$U=$``All Humans''
+\\$T(x)=$``$x$ takes the train''
+\\$N(x)=$``$x$ negates the noodle house''
+\\$W(x)=$``$x$ walks the dog''\\ 
+\item Find the invalid argument:
+\begin{enumerate}
+
+\item 
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\forall x(T(x)\implies N(x))$
+	\item $\exists x(\neg N(x))$
+\end{enumerate} 
+$\quad \therefore \exists x(\neg T(x))$\vspace{3pt}
+
+\item 
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item \protect\hl{$\exists x(T(x)\lor N(x))$}
+	\item \protect\hl{$\exists x(\neg N(x))$}
+\end{enumerate} 
+$\quad \therefore $ \protect\hl{$\exists x(T(x)\land\neg N(x))$}\vspace{3pt}
+
+\item 
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\forall x(T(x)\land N(x))$
+	\item $\exists x(T(x)\implies N(x))$
+\end{enumerate} 
+$\quad \therefore \exists x(T(x)\lor N(x))$\vspace{3pt}
+
+\item 
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\neg\exists x(T(x)\implies N(x))$
+	\item $\exists x(\neg N(x))$
+\end{enumerate} 
+$\quad \therefore \forall x(T(x)\land \neg N(x))$\vspace{3pt}
+
+\end{enumerate}
+
+\item Select the most appropriate rule of inference to be applied at ``$?$'' in the argument below:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\forall x(W(x)\lor T(x))$
+	\item $?$
+\end{enumerate} 
+$\quad \therefore\exists x(T(x))$\vspace{3pt}\\
+Options:
+\begin{enumerate}
+\item \hl{Universal Instantiation}
+\item Universal Generalization
+\item Existential Instantiation
+\item Existential Generalization
+\end{enumerate}
+
+\item Select the correct set of elements for the argument below:
+\begin{enumerate}[label =(\arabic*), ref = \arabic*]
+	\item $\exists (x,y)(W(x)\land T(y))$
+	\item $\exists (x,z)(N(z)\land ((z\neq x)\implies \neg N(z)))$
+\end{enumerate} 
+Options:
+\begin{enumerate}
+\item $x=John$, $y=Jane$, $z=Jane$
+\item $x=John$, $y=Jill$, $z=Jane$
+\item $x=Jane$, $y=Jane$, $z=John$
+\item \hl{$x=John$, $y=Jane$, $z=John$}
+\end{enumerate}
+
+\newpage
+
+\textbf{Proof Techniques [15-17]}
+
+\item Find the mistake in the following proof:\\\\
+Prove that if integer $a$ is greater than 1, then $a$ is is not equal to 0.
+\\Indirect proof: Prove that if integer $a$ is equal to 0, then $a$ is smaller than 1.
+\\Assume $a$ is an integer equal to 0; then $a=0.$
+\\$0<1$\quad $\therefore a<1$\hfill $\square$
+\begin{enumerate}
+\item Circular reasoning
+\item \hl{Incorrect premise}
+\item Lack of evidence in arguments
+\item Does not prove the original statement
+\end{enumerate}
+
+\item What proof technique is being used in the example below:\\
+Theorem: "If $a$ is an integer greater than integer $b$, then $\frac{a}{2}<\frac{b}{2}$".\\
+Let $a=2, b=1$. Then $a>b$ since $2>1$;\\
+$(\frac{a}{2}<\frac{b}{2})=(\frac{2}{2}<\frac{1}{2})=(1<1/2)$\quad $\therefore$ This statement is False.
+\hfill $\square$
+\begin{enumerate}
+\item Contradiction
+\item Proof by case
+\item \hl{Counterexample}
+\item Direct Proof
+\end{enumerate}
+
+\item Which proof technique would be most effective to prove the following theorem:\\
+``If integer $a$ is negative and integer $b$ is positive, then $|a||b|$ must be positive.''
+\begin{enumerate}
+\item Direct Proof
+\item Indirect Proof
+\item Proof by Contradiction
+\item Proof by Cases
+\item \hl{Trivial Proof}
+\item Pigeonhole Principle
+\item Existence Proof
+\end{enumerate}
+
+\newpage
+
+\textbf{Set Theory [18-20]}\\\\
+Given the following sets:\\
+$A=\{a,b,c,d,e,f\}$\\
+$B=\{b,d,e,g,f\}$\\
+$C=\{d,o,n,m\}$\\
+\item Given:\\
+$F=(A\cap B)\setminus C$\\
+What is the set of $F$?
+\begin{enumerate}
+\item $F=\{a,b,c,r,g,f\}$
+\item $F=\{a,b,c,d, r,g,f\}$
+\item \hl{F=$\{b,e,f\}$}
+\item $F=\{b,d,e,f\}$
+\item $F=\{a\}$
+\item $F=\{b,e,f,g\}$
+\item $F=\{a,d,g,o,n,m\}$
+\end{enumerate}
+
+\item Which statement about the sets is false?
+\begin{enumerate}
+\item \hl{$\{b,d,e\}\subseteq (A\cap B)$}
+\item $\{d\}\subset(A\cap B\cap C)$
+\item $(C\setminus B)\subseteq(C)$
+\item $\{b,e,\emptyset\}\subset(A)$
+\end{enumerate}
+
+\item Which is the correct power set of $D=\{1,2,3\}$?
+\begin{enumerate}
+\item $P(D)=\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{2,1\},\{2,3\},\{3,2\},\{1,3\},\{3,1\},\{1,2,3\},\{3,2,1\},\{2,3,1\}\}$
+\item $P(D)=\{\emptyset,\{1\},\{2\},\{3\},\{1,2,3\}\}$
+\item $P(D)=\{\{1\},\{2\},\{3\},\{1,2\},\{2,3\},\{1,3\},\{1,2,3\}\}$
+\item $P(D)=\{\{1\},\{2\},\{3\},\{1,2\},\{2,1\},\{2,3\},\{3,2\},\{1,3\},\{3,1\},\{1,2,3\},\{3,2,1\},\{2,3,1\}\}$
+\item \hl{$P(D)=\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{2,3\},\{1,3\},\{1,2,3\}\}$}
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
