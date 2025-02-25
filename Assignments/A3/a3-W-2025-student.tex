@@ -1,0 +1,178 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\usepackage{float}
+\usepackage{xcolor, graphicx}
+\usepackage{hyperref}
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.24in}
+\setlength{\oddsidemargin}{-0.24in}
+\setlength{\textheight}{8.45in}
+\setlength{\topmargin}{-0.45in}
+\setlength{\parindent}{0.3in}
+\headheight72pt
+\headsep22pt
+
+\pagestyle{myheadings}
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Your Name and student ID}\vspace{-5pt}\\\hrulefill}
+
+\def\qed{\ \ \vrule height6pt width5pt depth3pt}
+\renewcommand{\implies}{\rightarrow}
+\newcommand{\xor}{\oplus}
+\newcommand{\same}{\leftrightarrow}
+\newcommand{\ov}[1]{\overline{#1}}
+
+% Blue solution
+\newcommand{\sol}[1]{\textbf{Solution:\,}\textcolor{blue}{#1}}
+
+
+\begin{document}
+\bibliographystyle{alpha}
+\title{Assignment 3 - COMP 1805}
+\date{} %comment this out if you want the date to be shown.
+\maketitle
+\thispagestyle{fancy}
+
+
+
+\medskip
+\begin{enumerate}
+
+
+
+\item(8pts) Define each set using set-builder notation. If the set is finite, state its cardinality; otherwise, indicate that it is infinite.
+
+\begin{enumerate}
+\item $\{ 10, 20, 30, 40,  \ldots, 1000 \}$
+\item $\{ -6, -4, -2, 0, 2, 4, 6 \}$
+\item $\{ 0,3,6,9,12, \ldots \}$
+\item $\{ 0.5, 1, 2, 4, 8, 16, \ldots \}$
+\end{enumerate}
+
+
+
+
+\item(16pts) Determine whether each statement is true or false for all sets $A$ and $B$. Provide a justification for your answer. Note that the difference between two sets $A$ and $B$ can be denoted $A \setminus B$ or $A - B$. 
+
+\begin{enumerate}
+\item If $A \subset B$ then $A \subseteq B$.
+\item If $A \subseteq B$ then $A \subset B$.
+\item If $A = B$ then $A \subseteq B$.
+\item If $A = B$ then $B \subset A$.
+\item If $A \subset B$ then $A \neq B$ and $B \neq \emptyset$.
+\item If $A \subseteq B$ then $A \cup B = B$ and $A \cap B = A$.
+\item If $A \cap (B - A) = \emptyset$ then $A = \emptyset$.
+\item If $A - (B - A) = \emptyset$ then $A = \emptyset$.
+\end{enumerate}
+ 
+
+
+
+\item(10pts) Using the provided template, draw a Venn Diagram to represent the following sets:\\
+\begin{center}
+\includegraphics[width = 0.27\textwidth]{template.png}
+\end{center}
+
+\begin{enumerate} 
+\item $(A\cup B) \cap C$ 
+\item $A\cup (B \cap C)$ 
+\item $\overline{(A \cup B)} \cap C$ 
+\item $\overline{(A - B)} \cap C$
+\item $(A \cap B) \cup (A \cap \overline{C})$
+\end{enumerate}
+
+
+
+
+\item(18pts) Let $A$, $B$ and $C$ be sets. Determine the validity of each statement below. Justify your answer using set identities or membership tables. If two sets are not equivalent, provide a counterexample. A sample solution is provided for part (a).
+\begin{enumerate}
+\item $A \cap (B-C) = (A-C) \cap B$
+
+\sol{The equation is true. We will show this using set identities. 
+\begin{align*}
+A \cap (B-C)
+ &= A \cap (B \cap \overline{C}) & \text{Difference Equivalence}\\
+ &= (A \cap \overline{C}) \cap B & \text{Commutative and Associative Laws}\\
+ &= (A - C) \cap B & \text{Difference Equivalence} \\
+ \end{align*} 
+}
+
+\item $(A-\overline{B}) \cup (B-\overline{A}) = (A \cap B)$ 
+\item $\overline{(A-B) \cup (B-A)} = \overline{A}\cup B$
+\item $((A - B)\cup(A \cap B))\cap((\ov{B\cap \ov{B}}) - A)= \emptyset$
+\item $A-(B-C) = (A-B)-C$
+\item $(B \cup C)-(A \cup \ov{C}) = \ov{A} \cap C = \ov{A} \cap (A \cup C)$
+\item $(A \cup \ov{C})- (B \cup C) = A \cap B \cap \ov{C}$
+
+\end{enumerate}
+
+
+
+
+\item(10pts) Determine whether $f$ is a function or not. Justify your answer. Recall, that $\mathbb{R}$ is the set of all real numbers, $\mathbb{Z}$ is the set of all integers. 
+
+\begin{enumerate}
+\item $f:\mathbb{R} \rightarrow \mathbb{R}$, $f(x)=\frac{1}{3-x}$.
+\item $f:\mathbb{R} \rightarrow \mathbb{R}$, $f(x)=\pm \sqrt{x^2+5}$.
+\item $f:\mathbb{Z} \rightarrow \mathbb{R}$, $f(x)=\sqrt{x^2+8}$.
+\item $f:\mathbb{R} \rightarrow \mathbb{R}$, $f(x)=\sqrt{x+1}$.
+\item $f:\mathbb{R} \rightarrow \mathbb{Z}$, $f(x)=\lceil x \rceil$. Note that $f$ is the ceiling function.
+\end{enumerate}
+
+
+
+
+\item(21pts) For each of the following functions $f:\mathbb{R} \rightarrow \mathbb{R}$ prove or disprove the following:
+\begin{itemize}
+\item The function is injective (one-to-one).
+\item The function is surjective (onto).
+\item The function is bijective (both injective and surjective). If the function is a bijection, find its inverse.
+\end{itemize}
+
+\begin{enumerate}	
+\item $f(x) = \lfloor 3 x \rfloor$. Note that $\lfloor x \rfloor$ is the \textbf{floor} function.
+\item $f(x) = 8-3x$
+\item $f(x) = |8 - 3 x|$  
+\item $f(x) = 4x^3 + 5$
+\item $f(x) = 2x^2-3$
+\end{enumerate}
+
+
+
+
+\item(9pts) Let $f$ and $g$ both be functions from real numbers to real numbers. Let $f(x) = 3x^2-8$ and $g(x) = x-2$. Define each of the following, simplify, and then evaluate. You need to show your work.
+\begin{enumerate}
+\item $(f\circ g) (x= -1)$ 
+\item $(g\circ f)(x=2)$
+\item $((g\circ f)\circ g) (x=1)$ Reuse solution to part (b).
+\end{enumerate}
+
+
+
+
+\item (8 pts) Let $f:\mathbb{R} \rightarrow \mathbb{R}$ and $g:\mathbb{R} \rightarrow \mathbb{R}$. Prove or disprove the followings:
+
+\begin{enumerate}
+\item if $f$ and $g$ are both bijections, then $f(x)+g(x)$ is also a bijection. 
+\item if $f$ is a bijection, then for any real number $c \neq 0$, $c \cdot f(x)$ is also a bijection. 
+\end{enumerate}
+ 
+\end{enumerate}
+\end{document}
+
+
